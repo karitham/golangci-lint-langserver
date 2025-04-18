@@ -17,7 +17,11 @@ func TestLangHandler_lint_Integration(t *testing.T) {
 		t.Fatal("golangci-lint is not installed in this environment")
 	}
 
-	command := []string{"golangci-lint", "run", "--output.json.path", "stdout", "--issues-exit-code=1", "--show-stats=false"}
+	command := []string{"golangci-lint", "run",
+		"--output.json.path", "stdout",
+		"--path-mode", "abs",
+		"--issues-exit-code=1", "--show-stats=false",
+	}
 
 	tests := []struct {
 		name     string
